@@ -1,6 +1,5 @@
 name: hlc
 description: Dart port of a hybrid logical clock (HLC).
-publish_to: hlc
 version: 1.0.0
 environment:
   sdk: '>=2.15.0 <3.0.0'
