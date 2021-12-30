@@ -1,5 +1,33 @@
 # Dart Hybrid Logical Clock (HLC)
 
-This is a Dart port of the hybrid logical clock implementation described by Jared Forsyth in [this article](https://jaredforsyth.com/posts/hybrid-logical-clocks/);
+This is a Dart port of the hybrid logical clock implementation described by Jared Forsyth in [this article](https://jaredforsyth.com/posts/hybrid-logical-clocks/).
 
 HLCs are a useful primitive for [CRDT](https://crdt.tech/) implementations.
+
+## Usage
+
+Initialize a local HLC with the current wall clock:
+
+```dart
+var hlc = HLC.now();
+```
+
+Perform a local action that requires advancing the local HLC:
+
+```dart
+hlc = hlc.increment();
+```
+
+Receive a remote HLC, applying it to the local one:
+
+```dart
+final remoteHlc = HLC.now(); // From somewhere in the network.
+hlc = hlc.receive(remoteHlc);
+```
+
+Serialize/deserialize an HLC while maintaining its topological ordering:
+
+```dart
+final serialized = hlc.pack();
+final deserialized = HLC.unpack(serialized);
+```
