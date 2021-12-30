@@ -4,7 +4,24 @@ This is a Dart port of the hybrid logical clock implementation described by Jare
 
 HLCs are a useful primitive for [CRDT](https://crdt.tech/) implementations.
 
+## Install
+
+[![Pub Version](https://img.shields.io/pub/v/hlc?color=green)](https://pub.dev/packages/hlc)
+
+In `pubspec.yaml`:
+
+```yaml
+dependencies:
+  hlc: ^1.0.0
+```
+
 ## Usage
+
+Import the library:
+
+```dart
+import 'package:hlc/hlc.dart';
+```
 
 Initialize a local HLC with the current wall clock:
 
