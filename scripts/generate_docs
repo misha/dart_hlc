@@ -1,4 +1,7 @@
 #!/bin/sh
 
+rm -rf docs
 dartdoc
-mv doc/ docs/
+mv doc/api docs
+echo "dart-hlc.misha.jp" > docs/CNAME
+rm -rf doc
