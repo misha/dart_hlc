@@ -124,6 +124,11 @@ class HLC implements Comparable<HLC> {
         node.hashCode,
       );
 
+  @override
+  String toString() {
+    return pack();
+  }
+
   /// Encodes this HLC into a string representation whose topological ordering
   /// is equivalent to that of the original HLC.
   String pack() {
