@@ -45,13 +45,36 @@ class HLC implements Comparable<HLC> {
     );
   }
 
+  /// Produces the next, local clock.
   HLC increment() {
     return copy(count: count + 1);
   }
 
-  HLC receive(HLC remote, {int? now}) {
+  /// Synchronizes with a given [remote] clock.
+  ///
+  /// If a [maximumDrift] is configured and the remote clock is sufficiently in
+  /// the future, a [TimeDriftException] will be thrown.
+  ///
+  /// The [now] parameter indicates the wall clock in milliseconds. It is primarily
+  /// used for testing.
+  HLC receive(
+    HLC remote, {
+    Duration? maximumDrift,
+    int? now,
+  }) {
     now ??= DateTime.now().millisecondsSinceEpoch;
     final local = this;
+
+    if (maximumDrift != null) {
+      final drift = Duration(milliseconds: remote.timestamp - now);
+
+      if (drift > maximumDrift) {
+        throw TimeDriftException(
+          drift: drift,
+          maximumDrift: maximumDrift,
+        );
+      }
+    }
 
     if (now > local.timestamp && now > remote.timestamp) {
       return copy(timestamp: now, count: 0);
@@ -123,4 +146,17 @@ class HLC implements Comparable<HLC> {
       node: parts.sublist(2).join(delimiter),
     );
   }
+}
+
+class TimeDriftException implements Exception {
+  final Duration drift;
+
+  final Duration maximumDrift;
+
+  const TimeDriftException({
+    required this.drift,
+    required this.maximumDrift,
+  });
+
+  String get message => 'TimeDriftException: The received clock\'s time drift exceeds the maximum.';
 }
