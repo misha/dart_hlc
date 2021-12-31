@@ -1,7 +1,9 @@
 #!/bin/sh
 
-rm -rf docs
 dartdoc
-mv doc/api docs
+
+# Copy to docs/ for GitHub Pages.
+rm -rf docs
+mkdir docs
+cp -r doc/api/* docs
 echo "dart-hlc.misha.jp" > docs/CNAME
-rm -rf doc
