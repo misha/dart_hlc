@@ -1,11 +1,10 @@
 name: hlc
 description: Dart port of a hybrid logical clock (HLC).
-homepage: https://github.com/misha/dart-hlc
-repository: https://github.com/misha/dart-hlc
-documentation: https://dart-hlc.misha.jp
-version: 1.0.3
+homepage: https://github.com/misha/dart_hlc
+repository: https://github.com/misha/dart_hlc
+version: 1.0.4
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: ">=2.15.0 <3.0.0"
 dev_dependencies:
   lints: ^1.0.0
   test: ^1.20.1

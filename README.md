@@ -4,8 +4,6 @@ This is a Dart port of the hybrid logical clock implementation described by Jare
 
 HLCs are a useful primitive for [CRDT](https://crdt.tech/) implementations.
 
-Generated documentation can be found [here](https://dart-hlc.misha.jp/).
-
 ## Install
 
 [![Pub Version](https://img.shields.io/pub/v/hlc?color=green)](https://pub.dev/packages/hlc)

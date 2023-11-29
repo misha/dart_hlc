@@ -13,3 +13,7 @@
 ## 1.0.3
 
 - Publish a documentation site.
+
+## 1.0.4
+
+- Some housekeeping; no code changes. Rename the repository.
